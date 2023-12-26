@@ -2,14 +2,55 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <title>Course Calendar</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Line Awesome -->
+    <link th:href="@{https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css}" rel="stylesheet">
+    <!-- Air Datepicker CSS -->
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css}" rel="stylesheet">
+    <!-- Local CSS -->
+    <link th:href="@{/css/style.css}" rel="stylesheet"> <!-- Update with your local CSS path -->
+
 </head>
 <body>
-<div class="container-fluid text-center">
-    <h1>University Rating App</h1>
-    <a class="h2" th:color="blue" th:href="@{/courses}">Show all courses</a></h2>
+
+<div class="p-5">
+    <h2 class="mb-4">All Courses in Calendar View</h2>
+    <div class="card">
+        <div class="card-body p-0">
+            <div id="calendar" th:id="calendar"></div>
+        </div>
+    </div>
 </div>
+
+<!-- Calendar Modal -->
+<div id="modal-view-event" class="modal modal-top fade calendar-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
+                <div class="event-body"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js}"></script>
+<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js}"></script>
+<!-- Local Script -->
+<script th:src="@{/js/script.js}"></script> <!-- Update with your local script path -->
 
 </body>
 </html>
