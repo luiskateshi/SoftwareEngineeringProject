@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title></title>
+    <link rel="stylesheet"  th:href="@{/css/navBar.css}" >
     <link rel="stylesheet"  th:href="@{/css/courses.css}" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script th:src="@{/js/coursesScript.js}"></script>
@@ -9,19 +10,12 @@
 
 
 <body>
-<div class="searchButton">
+    <!-- <iframe src="navBar.html"  width=100% height=100%></iframe> -->
+    <!-- <iframe src="courses.html" width=100% height=100%></iframe> -->
 
-    <!-- The form -->
-    <form class="" action="">
-        <input type="text" placeholder="Search course" name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+    <div th:include="navBar :: navBar"></div>
+    <div th:include="courses :: courses"></div>
 
-    <div class="container" id="coursesContainer">
-        <!-- Courses will be dynamically added here -->
-    </div>
-
-</div>
 </body>
 
 </html>
