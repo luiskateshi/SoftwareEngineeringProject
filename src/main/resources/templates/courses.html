@@ -1,10 +1,31 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Courses</title>
+    <title></title>
+    <link rel="stylesheet"  th:href="@{/css/courses.css}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script th:src="@{/js/coursesScript.js}"></script>
 </head>
+
+
 <body>
 
+<div class="searchButton" th:fragment="content">
+
+    <!-- The form -->
+    <form class="" action="">
+        <input type="text" placeholder="Search course" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+    <div class="container" id="coursesContainer">
+        <!-- Courses will be dynamically added here -->
+    </div>
+
+</div>
+
+
 </body>
+
 </html>

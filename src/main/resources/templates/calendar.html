@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Course Calendar</title>
+    <link rel="stylesheet"  th:href="@{/css/navBar.css}" >
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -12,10 +13,11 @@
     <!-- Air Datepicker CSS -->
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css}" rel="stylesheet">
     <!-- Local CSS -->
-    <link th:href="@{/css/style.css}" rel="stylesheet"> <!-- Update with your local CSS path -->
+    <link th:href="@{/css/CalendarStyle.css}" rel="stylesheet"> <!-- Update with your local CSS path -->
 
 </head>
 <body>
+<div th:replace="navBar :: content"></div> <br>
 
 <div class="p-5">
     <h2 class="mb-4">All Courses in Calendar View</h2>
@@ -50,7 +52,7 @@
 <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js}"></script>
 <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js}"></script>
 <!-- Local Script -->
-<script th:src="@{/js/script.js}"></script> <!-- Update with your local script path -->
+<script th:src="@{/js/CalendarScript.js}"></script> <!-- Update with your local script path -->
 
 </body>
 </html>

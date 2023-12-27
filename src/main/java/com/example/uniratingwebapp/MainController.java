@@ -8,6 +8,11 @@ public class MainController {
 
     @GetMapping("")
     public String showHome() {
-        return "index";
+        return "HomePage";
+    }
+
+    @GetMapping("/calendar")
+    public String showCalendar() {
+        return "calendar";
     }
 }

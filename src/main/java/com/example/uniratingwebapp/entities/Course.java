@@ -30,4 +30,7 @@ public class Course {
 
     @Column(name="currentNumberOfStudents", nullable = true)
     private int currentNumberOfStudents;
+
+    @Column(name="image", nullable = true)
+    private String image;
 }
