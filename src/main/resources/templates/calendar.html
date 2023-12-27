@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Course Calendar</title>
+    <link rel="stylesheet"  th:href="@{/css/navBar.css}" >
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -16,6 +17,7 @@
 
 </head>
 <body>
+<div th:replace="navBar :: content"></div> <br>
 
 <div class="p-5">
     <h2 class="mb-4">All Courses in Calendar View</h2>

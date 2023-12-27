@@ -10,4 +10,9 @@ public class MainController {
     public String showHome() {
         return "HomePage";
     }
+
+    @GetMapping("/calendar")
+    public String showCalendar() {
+        return "calendar";
+    }
 }
