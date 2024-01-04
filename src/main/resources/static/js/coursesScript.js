@@ -3,6 +3,46 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchCourses();
 });
 
+$(document).ready(function () {
+    $("#searchForm").submit(function (event) {
+        event.preventDefault();
+        searchCourses();
+    });
+});
+
+
+function searchCourses() {
+
+    //let search = {}
+    //search["search"] = $("#searchInput").val();
+    var endpoint = '/courses/search?search=' + encodeURIComponent($("#searchInput").val());
+
+    // Make a GET request to the API using jQuery
+    jQuery.ajax({
+        url: endpoint,
+        type: 'GET',
+        //data: JSON.stringify(search),
+        dataType: 'json',
+        success: function (response) {
+            if (response && response.length > 0) {
+                var courses = response.map(function (course) {
+                    return {
+                        id: course.id,
+                        title: course.title,
+                        detailsLink: "#",
+                        image: course.image
+                    };
+                });
+                displayCourses(courses);
+            }
+        },
+        error: function (error) {
+            debugger;
+            document.getElementById('coursesContainer').innerHTML = '';
+            console.error('Error fetching courses:', error);
+        }
+    });
+}
 // Function to fetch courses from the Spring Boot API
 function fetchCourses() {
 
@@ -12,12 +52,13 @@ function fetchCourses() {
         type: 'GET',
         dataType: 'json',
         success: function (response) {
-        debugger;
+            debugger;
             // Once data is fetched successfully, display the courses
             if (response && response.length > 0) {
                 // Transform response data to your desired format
                 var courses = response.map(function (course) {
                     return {
+                        id: course.id,
                         title: course.title,
                         detailsLink: "#",
                         image: course.image
@@ -36,28 +77,12 @@ function fetchCourses() {
     });
 }
 
-/*
-// Function to display courses dynamically
+
 function displayCourses(courses) {
     const container = document.getElementById('coursesContainer');
 
-    // Iterate through the fetched courses and create HTML elements
-    courses.forEach(function (course) {
-        const courseElement = $('<div class="course"></div>');
 
-        courseElement.html(`
-            <div class="c1"><img src="" alt="${course.title}"></div>
-            <div class="c2"><h2>${course.title}</h2></div>
-            <div class="c3"><a href="#" class="details-link">Click to see course details</a></div>
-        `);
-
-        container.append(courseElement);
-    });
-}
-*/
-function displayCourses(courses) {
-    const container = document.getElementById('coursesContainer');
-
+    container.innerHTML = '';
     // Iterate through the fake courses and create HTML elements
     courses.forEach(course => {
         const courseElement = document.createElement('div');
@@ -66,9 +91,8 @@ function displayCourses(courses) {
         courseElement.innerHTML = `
             <div class="c1"><img src="../images/${course.image}" alt="${course.title}"></div>
             <div class="c2"><h2>${course.title}</h2></div>
-            <div class="c3"><a href="#" class="details-link">Click to see course details</a></div>
+            <div class="c3"><a href="http://localhost:5000/getCourse/${course.id}" class="details-link">Click to see course details</a></div>
         `;
-
         container.appendChild(courseElement);
     });
 }

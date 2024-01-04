@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet"  th:href="@{/css/navBar.css}" >
+    <link rel="stylesheet"  th:href="@{/css/courseDetails.css}" >
+    <script th:src="@{/js/courseDetailsScript.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+
+
+</head>
+
+
+<body>
+
+    <div th:replace="navBar :: content"></div> <br>
+
+<div class="details" >
+
+    <div class="courseTitle">
+        <p id="title">Course Title</p>
+    </div>
+
+    <div class="row">
+        <div class="column1">  
+            <img id="image" src="" alt="Course Picture">
+            
+        </div>
+        <div class="column2">
+            <form>
+                <label class="courseDetails">Course Details</label> <br><br>
+                
+                <label class="label_description">Description:  </label> <p id="description" class="details_description">Description of the course. </p> <br><br>
+                <label class="label_lecturer">Lecturer:  </label> <p id="lecturer" class="details_lecturer">Lecturer of the course.</p> <br><br>
+                <label class="label_times">Course Start:  </label> <p id="start-day" class="details_times">Starting Day:</p> <br><br>
+                <label class="label_location">Location:  </label> <p id="location" class="details_location">Location of the course.</p> <br><br>
+                <label class="label_stNumber">Registered students number:  </label> <p id="current-number" class="details_stNumber">Number of students of the course.</p> <br><br>
+                <label class="label_stNumber">Max number of students:  </label> <p id="max-number" class="details_stNumber">Number of students of the course.</p> <br><br>
+
+            </form>
+           
+            <div class="button-container">
+                <a href="#" class="enroll-button">Enroll</a>
+                <a href="#" class="unregister-button">Unregister</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ----------------------------------------------FEEDBACK SLIDER HTML ------------------------------------------------>
+</body>
