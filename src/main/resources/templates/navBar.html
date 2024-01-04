@@ -9,16 +9,18 @@
 <body>
 <div class="allElements" th:fragment="content">
 
-    <div class="logo"><img src="images/logo.png" alt="EduScopeLogo"></div>
+    <div class="logo"><img th:src="@{/images/logo.png}" alt="EduScopeLogo"></div>
     <div class="Title"> <p class="EduScope">EduScope</p></div>
 
     <div class="navBar">
         <ul>
-            <li> <a href="" > COURSES </a></li>
-            <li> <a href="" > CONTACT </a></li>
-            <li > <a href="" id="logout">  LOG OUT  </a></li>
+            <li><a th:href="@{/HomePage}">COURSES</a></li>
+            <li><a th:href="@{/calendar}">CALENDAR</a></li>
+            <li><a href="">CONTACT</a></li>
+            <li><a href="#" id="logout">LOG OUT</a></li>
         </ul>
     </div>
+
 
 </div>
 

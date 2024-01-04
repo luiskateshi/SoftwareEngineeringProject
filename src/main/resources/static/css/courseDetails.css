@@ -1,0 +1,97 @@
+.courseTitle{
+    margin:0;
+    text-transform: uppercase;
+    font-family:"Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+div .details{
+    width: 100%;
+}
+div .row{
+    display: flex;
+    width: 100%;
+}
+
+div .column1 {
+    width: 40%;
+}
+
+
+div .column1 img{
+    width: 100%;
+    height: 100%;
+}
+
+div .column2 {
+    width:60%;
+    padding-left: 2%;
+
+}
+
+.label_description , .details_description{
+    display: inline;
+}
+
+.label_lecturer, .details_lecturer{
+    display: inline;
+}
+
+.label_times, .details_times{
+    display: inline;
+}
+
+.label_location, .details_location{
+    display: inline;
+}
+
+.label_stNumber, .details_stNumber{
+    display: inline;
+}
+
+.column2 label {
+    line-height: 1.6;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.courseDetails{
+    line-height: 1.6;
+    font-weight: bold;
+    padding-left: 270px;
+    padding-right: 270px ;
+
+}
+
+.column2 p {
+    font-size: 20px;
+}
+
+.button-container {
+    text-align: center;
+  }
+
+.enroll-button, .unregister-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px;
+    border: 2px solid #061c2b;
+    border-radius: 5px;
+    color: #061c2b;
+    background-color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .enroll-button:hover, .unregister-button:hover {
+    background-color: #061c2b;
+    color: #ffffff;
+  }
+
+  /* ----------------------------------------------FEEDBACK SLIDER STYLE-----------------------------------------------*/
+
