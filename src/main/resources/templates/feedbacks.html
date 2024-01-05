@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Details</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for stars -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Style for stars */
+    .rating i {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-4" th:fragment="content">
+  <h2>Feedback Section</h2>
+  <!-- Other course details -->
+  <form id="feedbackForm">
+    <div class="form-group">
+      <label for="studentName">Your Name</label>
+      <input type="text" class="form-control" id="studentName" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="feedbackMessage">Feedback Message</label>
+      <textarea class="form-control" id="feedbackMessage" rows="3" placeholder="Enter your feedback"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <select class="form-control" id="rating">
+        <option value="5">5 stars</option>
+        <option value="4">4 stars</option>
+        <option value="3">3 stars</option>
+        <option value="2">2 stars</option>
+        <option value="1">1 star</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+  </form>
+  <!-- Feedback Section -->
+  <div class="mt-4">
+    <h4>Feedbacks</h4>
+
+    <!-- Feedback Cards (Replace with dynamic data) -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">John Doe</h5>
+        <p class="card-text">Great course! Really helpful content.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Bootstrap JavaScript and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

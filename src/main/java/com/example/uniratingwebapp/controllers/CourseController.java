@@ -33,6 +33,11 @@ public class CourseController {
         return courseRepository.findById(courseId);
     }
 
+    @GetMapping(path="/getByStudent/{id}")
+    public List<Course> getStudentCourses(@PathVariable(value = "id") Long studentId) {
+        return courseRepository.findCoursesByStudentId(studentId);
+    }
+
 
 
     @GetMapping(path="/getAll")
