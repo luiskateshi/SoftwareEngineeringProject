@@ -16,9 +16,19 @@ public class MainController {
     @Autowired
     private CourseRepository courseRepository;
 
-    @GetMapping("/")
+    @GetMapping("/homepage")
     public String showHome() {
         return "HomePage";
+    }
+
+    @GetMapping("/")
+    public String showLogIn() {
+        return "index";
+    }
+
+    @GetMapping("/signup")
+    public String showSignUp(){
+        return "signUp";
     }
 
     @GetMapping("/courses")

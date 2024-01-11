@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" th:href="@{/css/style1.min.css}">
+     <script defer th:src="@{/js/signup.js}"></script>
+</head>
+<body class="login">
+<div class="container">
+    <h2 class="text-center">Sign Up</h2>
+    <br>
+    <form action="#" th:action="@{/homepage}" class="signupForm">
+        <div class="error-message-all"></div>
+
+        <div class="input-group">
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" class="input">
+            <span class="error-message"></span>
+        </div>
+
+        <br>
+
+        <div class="input-group">
+            <label for="email" class="label">Email</label>
+            <input type="email" id="email" class="input">
+            <span class="error-message"></span>
+        </div>
+
+        <br>
+
+        <div class="input-group">
+            <label for="username" class="label">Username</label>
+            <input type="text" id="username" class="input">
+            <span class="error-message"></span>
+        </div>
+
+        <br>
+
+        <div class="input-group">
+            <label for="password" class="label">Password</label>
+            <input type="password" id="password" class="input">
+            <span class="error-message"></span>
+        </div>
+
+        <br>
+
+        <!-- Add additional sign-up fields as needed -->
+        <button class="button" type="submit">Sign Up</button>
+    </form>
+
+    <!-- Link to navigate back to the login page -->
+    <p class="text-center">Already have an account? <a href="/">Login</a>.</p>
+</div>
+</body>
+</html>

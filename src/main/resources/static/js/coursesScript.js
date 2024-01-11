@@ -52,7 +52,7 @@ function fetchCourses() {
         type: 'GET',
         dataType: 'json',
         success: function (response) {
-        debugger;
+        // debugger;
             // Once data is fetched successfully, display the courses
             if (response && response.length > 0) {
                 // Transform response data to your desired format
