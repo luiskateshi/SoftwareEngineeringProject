@@ -12,10 +12,19 @@ public class StudentEnrollment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id") // Name of the foreign key column in Feedback table
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id") // Name of the foreign key column in Feedback table
+    @JoinColumn(name = "student_id")
     private Student student;
+
+    public StudentEnrollment(Student student, Course course) {
+        this.student = student;
+        this.course = course;
+    }
+
+    public StudentEnrollment() {
+
+    }
 }
