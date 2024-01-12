@@ -23,6 +23,7 @@ function fetchFeedbacks(courseId){
         },
         error: function (error) {
             console.error('Error fetching course details:', error);
+            document.getElementById('feedbacks_msg').innerHTML = 'No feedbacks yet!';
 
         }
     });
@@ -30,6 +31,7 @@ function fetchFeedbacks(courseId){
 
 
 function displayFeedbackCards(feedbacks) {
+    debugger;
     const feedbacksContainer = document.getElementById('feedbacksContainer');
     feedbacksContainer.innerHTML = '';
 
@@ -41,6 +43,7 @@ function displayFeedbackCards(feedbacks) {
 }
 
 function createFeedbackCardElement(feedback) {
+    debugger;
     const card = document.createElement('div');
     card.classList.add('card', 'mb-3');
 

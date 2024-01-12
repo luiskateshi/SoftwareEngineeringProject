@@ -14,13 +14,14 @@ public class Feedback {
 
     private String feedback;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id") // Name of the foreign key column in Feedback table
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
     private Course course;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id") // Name of the foreign key column in Feedback table
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
     private Student student;
+
 
     private int rating;
 }

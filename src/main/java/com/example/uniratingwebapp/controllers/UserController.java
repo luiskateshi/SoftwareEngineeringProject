@@ -18,4 +18,3 @@ public class UserController {
         return "User access granted! " + principal.getName();
     }
 }
-

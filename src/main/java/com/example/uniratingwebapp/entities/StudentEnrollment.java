@@ -16,7 +16,7 @@ public class StudentEnrollment {
     private Course course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "studentId")
     private Student student;
 
     public StudentEnrollment(Student student, Course course) {

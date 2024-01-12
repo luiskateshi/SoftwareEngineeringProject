@@ -91,7 +91,7 @@ function displayCourses(courses) {
         courseElement.innerHTML = `
             <div class="c1"><img src="../images/${course.image}" alt="${course.title}"></div>
             <div class="c2"><h2>${course.title}</h2></div>
-            <div class="c3"><a href="http://localhost:5000/getCourse/${course.id}" class="details-link">Click to see course details</a></div>
+            <div class="c3"><a href="http://localhost:8080/getCourse/${course.id}" class="details-link">Click to see course details</a></div>
         `;
         container.appendChild(courseElement);
     });

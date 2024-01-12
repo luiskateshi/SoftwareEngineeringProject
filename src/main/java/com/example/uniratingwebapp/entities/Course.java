@@ -10,13 +10,12 @@ import lombok.Setter;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="Id")
     private Long Id;
 
     @Column(name="title")
     private String Title;
 
-    @Column(name="description", nullable = true)
+    @Column(name="description", nullable = true, length = 1000)
     private String Description;
 
     @Column(name="lecturer", nullable = true)

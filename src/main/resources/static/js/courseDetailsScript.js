@@ -41,6 +41,7 @@ function fetchCourseDetails(courseId){
 }
 
 function fetchEnrollmentStatus(courseId){
+    debugger;
 // AJAX request to fetch course details
     jQuery.ajax({
         url: `/studentEnrollments/isStudentEnrolledInCourse/${courseId}`,
@@ -121,7 +122,7 @@ function displayCourseDetails(course) {
     // Set the course description
     document.getElementById('description').innerText = course.description;
 
-    document.getElementById('lecturer').innerText = course.description;
+    document.getElementById('lecturer').innerText = course.lecturer;
 
     // Set the course start date
     document.getElementById('start-day').innerText = course.startDate;

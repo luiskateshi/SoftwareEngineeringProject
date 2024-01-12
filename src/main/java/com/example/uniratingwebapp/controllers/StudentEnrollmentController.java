@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/studentEnrollments")
 public class StudentEnrollmentController {
@@ -18,6 +19,7 @@ public class StudentEnrollmentController {
     private StudentRepository studentRepository;
     @Autowired
     private CourseRepository courseRepository;
+
 
     @GetMapping("/isStudentEnrolledInCourse/{courseId}")
     public boolean isStudentEnrolledInCourse( @PathVariable(name = "courseId") Long courseId) {
