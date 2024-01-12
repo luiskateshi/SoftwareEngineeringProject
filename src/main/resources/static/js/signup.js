@@ -43,14 +43,13 @@ class Signup {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        // if (data.success) {
-                        //     // Signup successful, you can redirect or perform any other action
-                        //     // For example, you can redirect to the login page
-                        //     window.location.href = "/login";
-                        // } else {
-                        //     document.querySelector(".error-message-all").style.display = "block";
-                        //     document.querySelector(".error-message-all").innerText = data.message;
-                        // }
+                        if (data.success){
+                            localStorage.setItem("token", data.token);
+                            this.form.submit();
+                        }else{
+                            document.querySelector(".error-message-all").style.display = "block";
+                            document.querySelector(".error-message-all").innerText = "Your username or password is incorrect";
+                        }
                     })
                     .catch(error => console.error('Error:', error));
             }

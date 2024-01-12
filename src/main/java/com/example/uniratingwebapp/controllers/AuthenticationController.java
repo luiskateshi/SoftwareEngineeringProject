@@ -17,7 +17,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public Student registerUser(@RequestBody RegistrationDTO body){
+    public LoginResponseDTO registerUser(@RequestBody RegistrationDTO body){
         return authenticationService.registerUser(body.getUsername(), body.getPassword(), body.getName(), body.getEmail());
     }
 
@@ -25,6 +25,7 @@ public class AuthenticationController {
     public LoginResponseDTO loginUser(@RequestBody RegistrationDTO body){
         return authenticationService.loginUser(body.getUsername(), body.getPassword());
     }
+
 
 }
 
