@@ -1,5 +1,5 @@
-const auth = new Auth();
+authentication = new Auth();
 
 document.querySelector(".logout").addEventListener("click", (e) => {
-    auth.logOut();
+    authentication.logOut();
 });

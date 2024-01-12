@@ -40,7 +40,7 @@ class Login {
                         if (data.success){
                             localStorage.setItem("username", data.user.username);
                             localStorage.setItem("token", data.token);
-                            localStorage.setItem("auth", 1);
+                            // localStorage.setItem("auth", 1);
                             this.form.submit();
 
                         }else{
