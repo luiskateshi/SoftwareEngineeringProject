@@ -1,4 +1,6 @@
 package com.example.uniratingwebapp.controllers;
+import com.example.uniratingwebapp.DTOs.CourseRatingDTO;
+import com.example.uniratingwebapp.repositories.FeedbackRepository;
 import org.springframework.http.ResponseEntity;
 import com.example.uniratingwebapp.entities.Course;
 import com.example.uniratingwebapp.repositories.CourseRepository;
@@ -16,6 +18,8 @@ public class CourseController {
 
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private FeedbackRepository feedbackRepository;
 
     @GetMapping("/search")
     public ResponseEntity<List<Course>> searchCourseByTitle(@RequestParam(name = "search") String searchTerm) {
@@ -28,20 +32,27 @@ public class CourseController {
         }
     }
 
-    @GetMapping(path="/get/{id}")
+    @GetMapping(path = "/get/{id}")
     public Optional<Course> getCourseById(@PathVariable(value = "id") Long courseId) {
         return courseRepository.findById(courseId);
     }
 
-    @GetMapping(path="/getByStudent/{id}")
+    @GetMapping(path = "/getByStudent/{id}")
     public List<Course> getStudentCourses(@PathVariable(value = "id") Long studentId) {
         return courseRepository.findCoursesByStudentId(studentId);
     }
 
 
-
-    @GetMapping(path="/getAll")
+    @GetMapping(path = "/getAll")
     public @ResponseBody List<Course> getCourses() {
         return courseRepository.findAll();
     }
+
+
+    @GetMapping(path = "/getTop8")
+    public @ResponseBody List<CourseRatingDTO> getTop8Courses() {
+        return feedbackRepository.findTop8ByOrderByRatingDesc();
+    }
+
 }
+
