@@ -44,7 +44,9 @@ class Signup {
                     .then(response => response.json())
                     .then(data => {
                         if (data.success){
+                            localStorage.setItem("username", data.user.username);
                             localStorage.setItem("token", data.token);
+                            // localStorage.setItem("auth", 1);
                             this.form.submit();
                         }else{
                             document.querySelector(".error-message-all").style.display = "block";
