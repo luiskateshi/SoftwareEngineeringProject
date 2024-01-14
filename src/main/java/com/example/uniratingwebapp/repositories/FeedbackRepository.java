@@ -21,4 +21,6 @@ public interface FeedbackRepository extends CrudRepository<Feedback, Long> {
             "ORDER BY AVG(f.rating) DESC")
 
     public List<CourseRatingDTO> findTop8ByOrderByRatingDesc();
+
+    Boolean existsByStudentIdAndCourseId(Long id, Long courseId);
 }

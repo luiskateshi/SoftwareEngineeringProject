@@ -30,7 +30,7 @@ function fetchCourseDetails(courseId){
         dataType: 'json',
         success: function (course) {
             // Display course details on the page
-            debugger;
+            // debugger;
             displayCourseDetails(course);
         },
         error: function (error) {
@@ -41,7 +41,7 @@ function fetchCourseDetails(courseId){
 }
 
 function fetchEnrollmentStatus(courseId){
-    debugger;
+    // debugger;
 // AJAX request to fetch course details
     jQuery.ajax({
         url: `/studentEnrollments/isStudentEnrolledInCourse/${courseId}`,

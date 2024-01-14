@@ -1,6 +1,8 @@
 package com.example.uniratingwebapp.controllers;
 import com.example.uniratingwebapp.DTOs.CourseRatingDTO;
+import com.example.uniratingwebapp.entities.Student;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
+import com.example.uniratingwebapp.services.UserService;
 import org.springframework.http.ResponseEntity;
 import com.example.uniratingwebapp.entities.Course;
 import com.example.uniratingwebapp.repositories.CourseRepository;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +23,14 @@ public class CourseController {
     private CourseRepository courseRepository;
     @Autowired
     private FeedbackRepository feedbackRepository;
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/hasStudentLeftFeedbackOnCourse/{courseId}")
+    public Boolean hasStudentLeftFeedbackOnCourse(@PathVariable(name = "courseId") Long courseId, Principal principal) {
+        Student loggedInStudent = userService.findByUsername(principal.getName());
+        return feedbackRepository.existsByStudentIdAndCourseId(loggedInStudent.getId(), courseId);
+    }
 
     @GetMapping("/search")
     public ResponseEntity<List<Course>> searchCourseByTitle(@RequestParam(name = "search") String searchTerm) {

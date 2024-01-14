@@ -23,21 +23,21 @@ public class StudentEnrollmentController {
 
     @GetMapping("/isStudentEnrolledInCourse/{courseId}")
     public boolean isStudentEnrolledInCourse( @PathVariable(name = "courseId") Long courseId) {
-        Long studentId = 0L; // TODO: Get the student ID from the logged in user
+        Long studentId = 1L; // TODO: Get the student ID from the logged in user
         return studentEnrollmentRepository.existsByStudentIdAndCourseId(studentId, courseId);
     }
 
     @Transactional
     @DeleteMapping("/deleteStudentEnrollment/{courseId}")
     public ResponseEntity<Boolean> deleteStudentEnrollment(@PathVariable(name = "courseId") Long courseId) {
-        Long studentId = 0L; // TODO: Get the student ID from the logged in user
+        Long studentId = 1L; // TODO: Get the student ID from the logged in user
         studentEnrollmentRepository.deleteStudentEnrollmentByStudentIdAndCourseId(studentId, courseId);
         return ResponseEntity.ok(true);
     }
 
     @GetMapping("/saveStudentEnrollment/{courseId}")
     public ResponseEntity<Boolean> saveStudentEnrollment(@PathVariable(name = "courseId") Long courseId) {
-        Long studentId = 0L; // TODO: Get the student ID from the logged in user
+        Long studentId = 1L; // TODO: Get the student ID from the logged in user
         var student = studentRepository.getById(studentId);
         var course = courseRepository.getById(courseId);
         studentEnrollmentRepository.save(new StudentEnrollment(student, course));
