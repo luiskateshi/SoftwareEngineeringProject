@@ -9,7 +9,7 @@ public interface StudentEnrollmentRepository extends JpaRepository<StudentEnroll
     boolean existsByStudentIdAndCourseId(Long studentId, Long courseId);
 
     @Modifying
-    @Query("DELETE FROM StudentEnrollment se WHERE se.student.Id = :studentId AND se.course.Id = :courseId")
+    @Query("DELETE FROM StudentEnrollment se WHERE se.student.id = :studentId AND se.course.Id = :courseId")
     void deleteStudentEnrollmentByStudentIdAndCourseId(Long studentId, Long courseId);
 
     @Modifying
