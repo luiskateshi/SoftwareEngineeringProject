@@ -1,12 +1,16 @@
 package com.example.uniratingwebapp.entities;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,4 +28,19 @@ public class Feedback {
 
 
     private int rating;
+
+    @Column(name = "date_added", nullable = false)
+    private LocalDateTime dateAdded;
+
+    @PrePersist
+    public void prePersist() {
+        dateAdded = LocalDateTime.now(); // Set the current date and time
+    }
+
+    public Feedback( String feedback, int rating, Student student, Course course) {
+        this.feedback = feedback;
+        this.rating = rating;
+        this.student = student;
+        this.course = course;
+    }
 }

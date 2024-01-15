@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentUrl = window.location.href;
     const urlParts = currentUrl.split('/');
     const id = urlParts[urlParts.length - 1];
+    document.getElementById('submitFeedback').addEventListener('click', function () {
+
+        // Call the submitFeedback function when the button is clicked
+        submitFeedback(id);
+    });
     fetchFeedbacks(id);
 });
 
@@ -28,6 +33,38 @@ function fetchFeedbacks(courseId){
         }
     });
 }
+
+
+// Function to submit feedback
+function submitFeedback(courseId) {
+
+    const feedbackText = document.getElementById('feedbackMessage').value;
+    const rating = document.getElementById('rating').value;
+    const token = localStorage.getItem('token');
+
+    const data = {
+        message: feedbackText,
+        rating: rating
+    };
+
+    jQuery.ajax({
+        url: `/feedbacks/addFeedback/${courseId}`,
+        type: 'POST',
+        contentType: 'application/json',
+        dataType: 'json',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        data: JSON.stringify(data),
+        success: function (response) {
+            console.log('Feedback submitted successfully:', response);
+        },
+        error: function (error) {
+            console.error('Error submitting feedback:', error);
+        }
+    });
+}
+
 
 
 function displayFeedbackCards(feedbacks) {

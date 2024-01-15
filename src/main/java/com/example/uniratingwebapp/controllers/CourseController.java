@@ -23,6 +23,8 @@ public class CourseController {
     private CourseRepository courseRepository;
     @Autowired
     private FeedbackRepository feedbackRepository;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/search")
     public ResponseEntity<List<Course>> searchCourseByTitle(@RequestParam(name = "search") String searchTerm) {
