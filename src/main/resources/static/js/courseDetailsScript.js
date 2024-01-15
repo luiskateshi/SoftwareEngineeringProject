@@ -52,6 +52,9 @@ function fetchEnrollmentStatus(courseId){
     jQuery.ajax({
         url: `/studentEnrollments/isStudentEnrolledInCourse/${courseId}`,
         type: 'GET',
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
         dataType: 'json',
         success: function (isEnrolled) {
             if(isEnrolled)
@@ -104,6 +107,9 @@ function enrollStudent(courseId){
     jQuery.ajax({
         url: `/studentEnrollments/saveStudentEnrollment/${courseId}`,
         type: 'GET',
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
         dataType: 'json',
         success: function (response) {
 
@@ -122,6 +128,9 @@ function unregisterStudent(courseId){
     jQuery.ajax({
         url: `/studentEnrollments/deleteStudentEnrollment/${courseId}`,
         type: 'DELETE',
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
         dataType: 'json',
         success: function (flag) {
             if(flag)
