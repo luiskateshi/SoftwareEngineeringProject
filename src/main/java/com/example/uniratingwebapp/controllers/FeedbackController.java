@@ -1,13 +1,16 @@
 package com.example.uniratingwebapp.controllers;
 
 import com.example.uniratingwebapp.DTOs.FeedbackDTO;
+import com.example.uniratingwebapp.DTOs.PostFeedbackDTO;
 import com.example.uniratingwebapp.entities.Course;
 import com.example.uniratingwebapp.entities.Feedback;
 import com.example.uniratingwebapp.entities.Student;
 import com.example.uniratingwebapp.repositories.CourseRepository;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
+import com.example.uniratingwebapp.repositories.StudentRepository;
 import com.example.uniratingwebapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +25,22 @@ public class FeedbackController {
     private FeedbackRepository feedbackRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CourseRepository courseRepository;
 
     @GetMapping("/hasStudentLeftFeedbackOnCourse/{courseId}")
     public Boolean hasStudentLeftFeedbackOnCourse(@PathVariable(name = "courseId") Long courseId, Principal principal) {
-        Student loggedInStudent = userService.findByUsername(principal.getName());
-        return feedbackRepository.existsByStudentIdAndCourseId(loggedInStudent.getId(), courseId);
+        Long studentId = userService.findByUsername(principal.getName()).getId();
+        return feedbackRepository.existsByStudentIdAndCourseId(studentId, courseId);
+    }
+
+    @PostMapping("/addFeedback/{courseId}")
+    public ResponseEntity<String> addFeedback(@RequestBody PostFeedbackDTO postFeedbackDTO, @PathVariable(name = "courseId") Long courseId , Principal principal) {
+        Student student = userService.findByUsername(principal.getName());
+        Course course = courseRepository.findById(courseId).get();
+        var feedback = new Feedback( postFeedbackDTO.getMessage(), postFeedbackDTO.getRating(), student, course);
+        feedbackRepository.save(feedback);
+        return new ResponseEntity<>("Feedback added successfully", HttpStatus.CREATED);
     }
 
     @GetMapping("/getByCourse/{courseId}")
@@ -54,6 +68,7 @@ public class FeedbackController {
         dto.setStudentName(feedback.getStudent().getName());
         dto.setMessage(feedback.getFeedback());
         dto.setRating(feedback.getRating());
+
         return dto;
     }
 }
