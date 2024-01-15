@@ -3,6 +3,8 @@ import com.example.uniratingwebapp.DTOs.CourseRatingDTO;
 import com.example.uniratingwebapp.entities.Student;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
 import com.example.uniratingwebapp.services.UserService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import com.example.uniratingwebapp.entities.Course;
 import com.example.uniratingwebapp.repositories.CourseRepository;
@@ -23,8 +25,6 @@ public class CourseController {
     private CourseRepository courseRepository;
     @Autowired
     private FeedbackRepository feedbackRepository;
-    @Autowired
-    private UserService userService;
 
     @GetMapping("/search")
     public ResponseEntity<List<Course>> searchCourseByTitle(@RequestParam(name = "search") String searchTerm) {
@@ -42,9 +42,8 @@ public class CourseController {
         return courseRepository.findById(courseId);
     }
 
-    @GetMapping(path = "/getByStudent")
-    public List<Course> getStudentCourses(Principal principal) {
-        Long studentId = userService.findByUsername(principal.getName()).getId();
+    @GetMapping(path = "/getByStudent/{id}")
+    public List<Course> getStudentCourses(@PathVariable(value = "id") Long studentId) {
         return courseRepository.findCoursesByStudentId(studentId);
     }
 
@@ -57,7 +56,11 @@ public class CourseController {
 
     @GetMapping(path = "/getTop8")
     public @ResponseBody List<CourseRatingDTO> getTop8Courses() {
-        return feedbackRepository.findTop8ByOrderByRatingDesc();
+       // return feedbackRepository.findTop8ByOrderByRatingDesc();
+
+        Pageable pageable = PageRequest.of(0, 8);
+        List<CourseRatingDTO> top8Courses = feedbackRepository.findTop8ByOrderByRatingDesc(pageable);
+        return top8Courses;
     }
 
 }

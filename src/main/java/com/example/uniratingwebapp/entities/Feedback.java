@@ -43,4 +43,7 @@ public class Feedback {
         this.student = student;
         this.course = course;
     }
+
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 }

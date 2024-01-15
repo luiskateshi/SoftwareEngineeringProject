@@ -46,6 +46,11 @@ public class MainController {
         return "calendar";
     }
 
+    @GetMapping("/top8")
+    public String showTop8() {
+        return "top8";
+    }
+
 
     @GetMapping(path="/getCourse/{Id}")
     public String showCourseWithId( Model model, @PathVariable Long Id) {

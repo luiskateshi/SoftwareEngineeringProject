@@ -9,6 +9,7 @@ import com.example.uniratingwebapp.repositories.CourseRepository;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
 import com.example.uniratingwebapp.repositories.StudentRepository;
 import com.example.uniratingwebapp.services.UserService;
+import com.example.uniratingwebapp.services.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,4 +72,16 @@ public class FeedbackController {
 
         return dto;
     }
+
+
+    @Autowired
+        private FeedbackService feedbackService;
+
+    @DeleteMapping("/deleteOldFeedbacks/{courseId}")
+    public ResponseEntity<String> deleteOldFeedbacks(@PathVariable Long courseId) {
+        feedbackService.deleteOldFeedbacks(courseId);
+        return ResponseEntity.ok("Old feedbacks deleted successfully.");
+    }
+
+
 }
