@@ -3,12 +3,15 @@ package com.example.uniratingwebapp.controllers;
 import com.example.uniratingwebapp.DTOs.FeedbackDTO;
 import com.example.uniratingwebapp.entities.Course;
 import com.example.uniratingwebapp.entities.Feedback;
+import com.example.uniratingwebapp.entities.Student;
 import com.example.uniratingwebapp.repositories.CourseRepository;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
+import com.example.uniratingwebapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +20,14 @@ import java.util.Objects;
 public class FeedbackController {
     @Autowired
     private FeedbackRepository feedbackRepository;
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/hasStudentLeftFeedbackOnCourse/{courseId}")
+    public Boolean hasStudentLeftFeedbackOnCourse(@PathVariable(name = "courseId") Long courseId, Principal principal) {
+        Student loggedInStudent = userService.findByUsername(principal.getName());
+        return feedbackRepository.existsByStudentIdAndCourseId(loggedInStudent.getId(), courseId);
+    }
 
     @GetMapping("/getByCourse/{courseId}")
     public ResponseEntity<List<FeedbackDTO>> getFeedbacksByCourse(@PathVariable(name = "courseId") Long courseId) {

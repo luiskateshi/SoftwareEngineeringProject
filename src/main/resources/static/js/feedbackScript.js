@@ -31,7 +31,7 @@ function fetchFeedbacks(courseId){
 
 
 function displayFeedbackCards(feedbacks) {
-    debugger;
+    // debugger;
     const feedbacksContainer = document.getElementById('feedbacksContainer');
     feedbacksContainer.innerHTML = '';
 
@@ -43,7 +43,7 @@ function displayFeedbackCards(feedbacks) {
 }
 
 function createFeedbackCardElement(feedback) {
-    debugger;
+    // debugger;
     const card = document.createElement('div');
     card.classList.add('card', 'mb-3');
 

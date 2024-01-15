@@ -23,14 +23,6 @@ public class CourseController {
     private CourseRepository courseRepository;
     @Autowired
     private FeedbackRepository feedbackRepository;
-    @Autowired
-    private UserService userService;
-
-    @GetMapping("/hasStudentLeftFeedbackOnCourse/{courseId}")
-    public Boolean hasStudentLeftFeedbackOnCourse(@PathVariable(name = "courseId") Long courseId, Principal principal) {
-        Student loggedInStudent = userService.findByUsername(principal.getName());
-        return feedbackRepository.existsByStudentIdAndCourseId(loggedInStudent.getId(), courseId);
-    }
 
     @GetMapping("/search")
     public ResponseEntity<List<Course>> searchCourseByTitle(@RequestParam(name = "search") String searchTerm) {
