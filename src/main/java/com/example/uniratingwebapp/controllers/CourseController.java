@@ -48,8 +48,9 @@ public class CourseController {
         return courseRepository.findById(courseId);
     }
 
-    @GetMapping(path = "/getByStudent/{id}")
-    public List<Course> getStudentCourses(@PathVariable(value = "id") Long studentId) {
+    @GetMapping(path = "/getByStudent")
+    public List<Course> getStudentCourses(Principal principal) {
+        Long studentId = userService.findByUsername(principal.getName()).getId();
         return courseRepository.findCoursesByStudentId(studentId);
     }
 
