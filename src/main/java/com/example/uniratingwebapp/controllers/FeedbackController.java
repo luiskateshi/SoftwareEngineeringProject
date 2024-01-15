@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -71,4 +72,15 @@ public class FeedbackController {
 
         return dto;
     }
+
+
+    @DeleteMapping("/deleteRecentFeedbacks/{courseId}")
+    public ResponseEntity<String> deleteRecentFeedbacks(@PathVariable Long courseId) {
+        LocalDateTime oneMinuteAgo = LocalDateTime.now().minusMinutes(1);
+        List<Feedback> recentFeedbacks = feedbackRepository.findByCourseIdAndCreationDateBefore(1L, oneMinuteAgo);
+        feedbackRepository.deleteAll(recentFeedbacks);
+        return ResponseEntity.ok("Recent feedbacks deleted successfully.");
+    }
+
+
 }

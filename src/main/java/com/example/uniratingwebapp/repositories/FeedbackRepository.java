@@ -2,10 +2,12 @@ package com.example.uniratingwebapp.repositories;
 
 import com.example.uniratingwebapp.DTOs.CourseRatingDTO;
 import com.example.uniratingwebapp.entities.Feedback;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -20,7 +22,11 @@ public interface FeedbackRepository extends CrudRepository<Feedback, Long> {
             "GROUP BY f.course " +
             "ORDER BY AVG(f.rating) DESC")
 
-    public List<CourseRatingDTO> findTop8ByOrderByRatingDesc();
+    public List<CourseRatingDTO> findTop8ByOrderByRatingDesc(Pageable pageable);
 
     Boolean existsByStudentIdAndCourseId(Long id, Long courseId);
+
+
+    List<Feedback> findByCourseIdAndCreationDateBefore(Long courseId, LocalDateTime date);
 }
+
