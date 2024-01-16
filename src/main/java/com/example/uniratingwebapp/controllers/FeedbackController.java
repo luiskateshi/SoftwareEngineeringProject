@@ -74,12 +74,10 @@ public class FeedbackController {
     }
 
 
-    @DeleteMapping("/deleteRecentFeedbacks/{courseId}")
-    public ResponseEntity<String> deleteRecentFeedbacks(@PathVariable Long courseId) {
-        LocalDateTime oneMinuteAgo = LocalDateTime.now().minusMinutes(1);
-        List<Feedback> recentFeedbacks = feedbackRepository.findByCourseIdAndCreationDateBefore(1L, oneMinuteAgo);
-        feedbackRepository.deleteAll(recentFeedbacks);
-        return ResponseEntity.ok("Recent feedbacks deleted successfully.");
+    @GetMapping ("/deleteOldFeedbacks")
+    public ResponseEntity<String> deleteOldFeedbacks() {
+        feedbackRepository.deleteOldFeedbacks();
+        return ResponseEntity.ok("Old feedbacks deleted successfully.");
     }
 
 

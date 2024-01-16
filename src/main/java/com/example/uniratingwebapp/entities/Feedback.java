@@ -29,11 +29,6 @@ public class Feedback {
 
     private int rating;
 
-    @Column(name = "creation_date")
-    private LocalDateTime creationDate;
-
-
-
     @Column(name = "date_added", nullable = false)
     private LocalDateTime dateAdded;
 

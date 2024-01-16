@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     fetchCourseDetails(id);
     fetchEnrollmentStatus(id);
+    deleteOldFeedbacks();
     // debugger;
     fetchFeedbackStatus(id);
     //added this line to show the page after the data is fetched
@@ -41,6 +42,21 @@ function fetchCourseDetails(courseId){
         },
         error: function (error) {
             console.error('Error fetching course details:', error);
+        }
+    });
+
+}
+
+function deleteOldFeedbacks(){
+    jQuery.ajax({
+        url: `/feedbacks/deleteOldFeedbacks`,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            alert(response);
+        },
+        error: function (error) {
+            console.error('Error deleting courses:', error);
         }
     });
 
