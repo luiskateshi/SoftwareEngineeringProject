@@ -7,7 +7,6 @@ import com.example.uniratingwebapp.entities.Feedback;
 import com.example.uniratingwebapp.entities.Student;
 import com.example.uniratingwebapp.repositories.CourseRepository;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
-import com.example.uniratingwebapp.repositories.StudentRepository;
 import com.example.uniratingwebapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -71,4 +71,12 @@ public class FeedbackController {
 
         return dto;
     }
+
+
+    @GetMapping ("/deleteOldFeedbacks")
+    public ResponseEntity<String> deleteOldFeedbacks() {
+        feedbackRepository.deleteOldFeedbacks();
+        return ResponseEntity.ok("Old feedbacks deleted successfully.");
+    }
+
 }
