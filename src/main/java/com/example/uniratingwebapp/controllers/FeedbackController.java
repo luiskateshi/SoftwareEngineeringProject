@@ -7,7 +7,6 @@ import com.example.uniratingwebapp.entities.Feedback;
 import com.example.uniratingwebapp.entities.Student;
 import com.example.uniratingwebapp.repositories.CourseRepository;
 import com.example.uniratingwebapp.repositories.FeedbackRepository;
-import com.example.uniratingwebapp.repositories.StudentRepository;
 import com.example.uniratingwebapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -79,6 +78,5 @@ public class FeedbackController {
         feedbackRepository.deleteOldFeedbacks();
         return ResponseEntity.ok("Old feedbacks deleted successfully.");
     }
-
 
 }
