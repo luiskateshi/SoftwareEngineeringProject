@@ -41,10 +41,8 @@
 ![image](https://github.com/luiskateshi/SoftwareEngineeringProject/assets/114147618/bd4cb8a5-64c7-4184-a686-87cffb837e2b)
 
 #### Leave a feedback
-![image](https://github.com/luiskateshi/SoftwareEngineeringProject/assets/114147618/d7f5e28c-54a6-41ca-9949-d024adb5893d)
-
-
-
+![image](https://github.com/luiskateshi/SoftwareEngineeringProject/assets/114147618/85c56498-c8c0-475a-9833-14e2fc5e4b1e)
 
 ## Screenshoots of Test Results
-![image](https://github.com/luiskateshi/SoftwareEngineeringProject/assets/114147618/280582c6-0305-4ead-9cb4-d353532df9f6)
+![image](https://github.com/luiskateshi/SoftwareEngineeringProject/assets/114147618/23359b35-e737-4903-b3ec-8635a3c47506)
+
